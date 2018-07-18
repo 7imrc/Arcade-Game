@@ -27,6 +27,8 @@ Enemy.prototype.render = function() {
 class Player {
   constructor(x,y) {
     this.sprite = 'images/char-boy.png';
+    this.x = x;
+    this.y = y;
   }
   update() {
 
@@ -34,8 +36,18 @@ class Player {
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
-  handleInput() {
+  handleInput(keyDirection) {
 
+    //Moves the player character when using the keyboard arrow keys
+    if (keyDirection === 'right') {
+        this.x += 100;
+    } else if (keyDirection === 'left') {
+      this.x -= 100;
+    } else if (keyDirection === 'up') {
+      this.y -= 100;
+    } else if (keyDirection === 'down') {
+      this.y += 100;
+    }
   }
 }
 
@@ -43,7 +55,7 @@ class Player {
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [];
 // Place the player object in a variable called player
-const player = new Player(10,10);
+const player = new Player(0,0);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
