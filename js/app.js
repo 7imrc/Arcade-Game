@@ -67,9 +67,9 @@ class Player {
     } else if (keyDirection === 'left') {
       this.x -= 100;
     } else if (keyDirection === 'up') {
-      this.y -= 100;
+      this.y -= 83;
     } else if (keyDirection === 'down') {
-      this.y += 100;
+      this.y += 83;
     }
   }
 }
@@ -82,7 +82,7 @@ const enemyTwo = new Enemy(0, 145, 50);
 const enemyThree = new Enemy(0, 230, 35);
 allEnemies.push(enemyOne, enemyTwo, enemyThree);
 // Place the player object in a variable called player
-const player = new Player(0,0);
+const player = new Player(200,405);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
