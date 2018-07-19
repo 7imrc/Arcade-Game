@@ -77,8 +77,10 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [];
-const enemyOne = new Enemy(100, 100, 25);
-allEnemies.push(enemyOne);
+const enemyOne = new Enemy(0, 60, 25);
+const enemyTwo = new Enemy(0, 145, 50);
+const enemyThree = new Enemy(0, 230, 35);
+allEnemies.push(enemyOne, enemyTwo, enemyThree);
 // Place the player object in a variable called player
 const player = new Player(0,0);
 
