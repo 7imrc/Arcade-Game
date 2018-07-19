@@ -36,6 +36,7 @@ class Enemy{
         // You should multiply any movement by the dt parameter
         // which will ensure the game runs at the same speed for
         // all computers.
+        this.x += this.speed * dt;
     };
   }
   render() {
@@ -76,7 +77,7 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [];
-const enemyOne = new Enemy(100, 100);
+const enemyOne = new Enemy(100, 100, 25);
 allEnemies.push(enemyOne);
 // Place the player object in a variable called player
 const player = new Player(0,0);
