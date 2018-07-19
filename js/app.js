@@ -31,13 +31,17 @@ class Enemy{
     this.y = y;
     this.speed = speed;
   }
-  update() {
-    Enemy.prototype.update = function(dt) {
-        // You should multiply any movement by the dt parameter
-        // which will ensure the game runs at the same speed for
-        // all computers.
-        this.x += this.speed * dt;
-    };
+  update(dt) {
+    // You should multiply any movement by the dt parameter
+    // which will ensure the game runs at the same speed for
+    // all computers.
+    this.x += this.speed * dt;
+
+    // When enemy gets to right hand edge of screen, reset it
+    // to re-appear from the lefthand side.
+    if (this.x >= 500) {
+      this.x = -100;
+    }
   }
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -77,9 +81,9 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [];
-const enemyOne = new Enemy(0, 60, 25);
-const enemyTwo = new Enemy(0, 145, 50);
-const enemyThree = new Enemy(0, 230, 35);
+const enemyOne = new Enemy(-100, 60, 25);
+const enemyTwo = new Enemy(-100, 145, 50);
+const enemyThree = new Enemy(-100, 230, 35);
 allEnemies.push(enemyOne, enemyTwo, enemyThree);
 // Place the player object in a variable called player
 const player = new Player(200,405);
