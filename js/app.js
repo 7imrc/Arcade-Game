@@ -1,31 +1,13 @@
 // Enemies our player must avoid
-/*
-var Enemy = function() {
+
+//ES6 version of Enemy Class
+class Enemy{
+  constructor(x, y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
-};
-
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
-};
-
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
-*/
-//ES6 version of Enemy Class
-class Enemy{
-  constructor(x, y, speed) {
     this.sprite = 'images/enemy-bug-edited.png';
     this.x = x;
     this.y = y;
@@ -34,6 +16,8 @@ class Enemy{
     this.height = 20;
   }
 
+  // Update the enemy's position, required method for game
+  // Parameter: dt, a time delta between ticks
   update(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
@@ -46,58 +30,19 @@ class Enemy{
       this.x = -100;
     }
 
-    //Determine if the player icon gets too close to the enemy
+    //Determine if the player icon collides with an enemy
     //icon
-    /*
-    if (Math.abs(player.x - this.x) <= 80 && Math.abs(player.y - this.y) <=40) {
-      //Collision detected! Reload the page
-      console.log("Collision!");
-      console.log("player x postn:" + player.x);
-      console.log("enemy x postn:" + this.x);
-      //window.location.reload();
-    }
-*/
     if (this.x < player.x + player.width &&
         this.x + this.width > player.x &&
         this.y < (player.y + player.height) &&
         this.height + this.y > player.y
     ) {
-          /*console.log("Collision!");
-          console.log("player x: " + player.x);
-          console.log("player y: " + player.y);
-          console.log("bug x: " + this.x);
-          console.log("bug y: " + this.y);
-          console.log("player x plus width: " + (player.x + player.width));
-          console.log("player y plus height: " + (player.y + player.height));
-          console.log("bug x plus width: " + (this.x + this.width));
-          console.log("bug y plus height: " + (this.y + this.height));
-          */
-          //window.location.reload();
-          player.reset();
+        player.reset();
     }
-/*
-  collision() {
-    //Determines if the player collides with one of the enemies
-    //const PlayerColl = {x: 5, y: 5, width: 50, height: 50}
-    //const EnemyColl = {x: 20, y: 10, width: 10, height: 10}
-
-    //Check each enemy in turn to determine if collided with player
-      //allEnemies.forEach(enemy => {
-        if (player.x - this.x <= 20 && player.y - this.y) {
-          console.log("Collision!");
-        }
-      //})
-
-    /*
-    if (Enemy.x < Player.x + Player.width &&
-        Enemy.x + Enemy.width > Player.x &&
-        Enemy.y < Player.y + Player.height &&
-        Enemy.height + Enemy.y > Player.y) {
-    }
-*/
   }
 
   render() {
+    // Draw the enemy on the screen, required method for game
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
 }
@@ -113,8 +58,8 @@ class Player {
     this.width = 68;
     this.height = 78;
   }
+
   update() {
-      //console.log(this.y);
       //Prevent player icon from disappearing off the edge of the game
       if (this.x > 420) {
         this.x = 420;
@@ -125,43 +70,38 @@ class Player {
       } else if (this.y < 50) {
         this.y = 50;
       }
-
-
   }
 
   reset() {
     //Reset the player to the initial position
-
       this.x = 220;
       this.y = 465;
-
   }
 
   win() {
-    if (this.y <= 50) {
-      //this.reset();
-    //console.log("you win!");
-    //window.alert("You win!");
-
     //const winMessage = document.createElement('p');
     //document.getElementsByTagName('p').innerHTML = 'You win!';
     //document.body.appendChild(winMessage);
+
+    //Display winner text on the canvas
     ctx.font = "30px Arial";
     ctx.fillText("Congratulations, you are a winner!", 20, 450);
-      setTimeout(function() {
-        //reset the game
-        window.location.reload();
 
-        //for (const enemy of allEnemies) {
-        //  enemy.speed = 0;
-        //}
-        //window.alert("You win!");
-
-      }, 3000);
+    //Stop all the enemies from moving
+    for (const enemy of allEnemies) {
+      enemy.speed = 0;
     }
+
+    //After 3 second delay showing winner message, reset the
+    //game
+    setTimeout(function() {
+      window.location.reload();
+      }, 3000
+    );
   }
 
   render() {
+    //Draw the player icon on the screen
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 
     //Player wins if reach the water.
