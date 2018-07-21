@@ -57,6 +57,7 @@ class Player {
     this.y = y;
     this.width = 68;
     this.height = 78;
+    this.score = 0;
   }
 
   update() {
@@ -64,18 +65,25 @@ class Player {
       if (this.x > 420) {
         this.x = 420;
       } else if (this.x < 20) {
-        this.x = 20;
+          this.x = 20;
       } else if (this.y > 465) {
-        this.y = 465;
-      } else if (this.y < 50) {
-        this.y = 50;
+          this.y = 465;
+      } else if (this.y <= 50) {
+          this.success();
       }
   }
 
   reset() {
     //Reset the player to the initial position
-      this.x = 220;
-      this.y = 465;
+    this.x = 220;
+    this.y = 465;
+  }
+
+  success() {
+    //Add 1 to score if player reaches water
+    //Reset player to original position
+    this.score += 1;
+    this.reset();
   }
 
   win() {
@@ -100,12 +108,18 @@ class Player {
     );
   }
 
+
+
   render() {
     //Draw the player icon on the screen
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 
+    //Score details at top of canvas
+    ctx.font = "30px Arial";
+    ctx.fillText("You have got "+ this.score + " times across out of 5", 10, 40);
+
     //Player wins if reach the water.
-    if (this.y <= 50) {
+    if (this.score == 5) {
       //this.reset();
       this.win();
     }
