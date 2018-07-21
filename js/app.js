@@ -72,7 +72,8 @@ class Enemy{
           console.log("bug x plus width: " + (this.x + this.width));
           console.log("bug y plus height: " + (this.y + this.height));
           */
-          window.location.reload();
+          //window.location.reload();
+          player.reset();
     }
 /*
   collision() {
@@ -113,7 +114,7 @@ class Player {
     this.height = 78;
   }
   update() {
-      console.log(this.x);
+      //console.log(this.y);
       //Prevent player icon from disappearing off the edge of the game
       if (this.x > 420) {
         this.x = 420;
@@ -125,16 +126,51 @@ class Player {
         this.y = 50;
       }
 
-      //Player wins if reaches the water
-      if (this.y <= 50) {
-        console.log("you win!");
-        window.alert("You win!");
-      }
+
+  }
+
+  reset() {
+    //Reset the player to the initial position
+
+      this.x = 220;
+      this.y = 465;
+
+  }
+
+  win() {
+    if (this.y <= 50) {
+      //this.reset();
+    //console.log("you win!");
+    //window.alert("You win!");
+
+    //const winMessage = document.createElement('p');
+    //document.getElementsByTagName('p').innerHTML = 'You win!';
+    //document.body.appendChild(winMessage);
+    ctx.font = "30px Arial";
+    ctx.fillText("Congratulations, you are a winner!", 20, 450);
+      //setTimeout(function() {
+        //move player to original position
+
+
+        //for (const enemy of allEnemies) {
+        //  enemy.speed = 0;
+        //}
+        //window.alert("You win!");
+
+      //}, 1000);
+    }
   }
 
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+
+    //Player wins if reach the water.
+    if (this.y <= 50) {
+      //this.reset();
+      this.win();
+    }
   }
+
   handleInput(keyDirection) {
 
     //Moves the player character when using the keyboard arrow keys
