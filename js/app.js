@@ -114,18 +114,24 @@ class Player {
   }
   update() {
       console.log(this.x);
-  //Prevent player icon from disappearing off the edge of the game
-  if (this.x > 420) {
-    this.x = 420;
-  } else if (this.x < 20) {
-    this.x = 20;
-  } else if (this.y > 465) {
-    this.y = 465;
-  } else if (this.y < 50) {
-    this.y = 50;
+      //Prevent player icon from disappearing off the edge of the game
+      if (this.x > 420) {
+        this.x = 420;
+      } else if (this.x < 20) {
+        this.x = 20;
+      } else if (this.y > 465) {
+        this.y = 465;
+      } else if (this.y < 50) {
+        this.y = 50;
+      }
+
+      //Player wins if reaches the water
+      if (this.y <= 50) {
+        console.log("you win!");
+        window.alert("You win!");
+      }
   }
 
-  }
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
