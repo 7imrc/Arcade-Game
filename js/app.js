@@ -148,16 +148,16 @@ class Player {
     //document.body.appendChild(winMessage);
     ctx.font = "30px Arial";
     ctx.fillText("Congratulations, you are a winner!", 20, 450);
-      //setTimeout(function() {
-        //move player to original position
-
+      setTimeout(function() {
+        //reset the game
+        window.location.reload();
 
         //for (const enemy of allEnemies) {
         //  enemy.speed = 0;
         //}
         //window.alert("You win!");
 
-      //}, 1000);
+      }, 3000);
     }
   }
 
@@ -185,6 +185,7 @@ class Player {
     }
   }
 }
+
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
