@@ -1,4 +1,4 @@
-### Frogger-style Game
+# Frogger-style Game
 
 This project involved taking some starter code from Udacity, which contained art assets and a game engine.  I had to then build the code in order to provide a workable game.
 
@@ -9,7 +9,7 @@ This project involved taking some starter code from Udacity, which contained art
 
 ## Game Play
 
-The playing character can be moved around the screen using the &larr, &uarr, &darr, &rarr keys.
+The playing character can be moved around the screen using the &leftarrow, &uparrow, &downarrow, &rightarrow keys.
 
 In order to complete the game, you need to get the character safely up the screen to the water 5 times.  If you collide with one of the enemy bugs, the player character will be returned to the start position.
 
@@ -20,3 +20,11 @@ Successfully crossing the screen, will result in a congratulations message, befo
 The Udacity starter code for this project can be found at their [Github page](https://github.com/udacity/frontend-nanodegree-arcade-game).
 
 The collision engine used in this project was adapted from [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection).
+
+## Further Development
+
+I plan to further develop the game by providing the following:
+
+* The ability to have player lives
+* Randomise the enemy bug speed
+* Introduce gems that can earn the player points 
