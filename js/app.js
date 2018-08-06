@@ -3,8 +3,6 @@
 //ES6 version of Enemy Class
 class Enemy{
   constructor(x, y, speed) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -30,8 +28,8 @@ class Enemy{
       this.x = -100;
     }
 
-    //Determine if the player icon collides with an enemy
-    //icon
+    // Determine if the player icon collides with an enemy
+    // icon.
     if (this.x < player.x + player.width &&
         this.x + this.width > player.x &&
         this.y < (player.y + player.height) &&
@@ -61,7 +59,7 @@ class Player {
   }
 
   update() {
-      //Prevent player icon from disappearing off the edge of the game
+      // Prevent player icon from disappearing off the edge of the game.
       if (this.x > 420) {
         this.x = 420;
       } else if (this.x < 20) {
@@ -74,34 +72,31 @@ class Player {
   }
 
   reset() {
-    //Reset the player to the initial position
+    // Reset the player to the initial position.
     this.x = 220;
     this.y = 465;
   }
 
   success() {
-    //Add 1 to score if player reaches water
-    //Reset player to original position
+    // Add 1 to score if player reaches water.
+    // Reset player to original position.
     this.score += 1;
     this.reset();
   }
 
   win() {
-    //const winMessage = document.createElement('p');
-    //document.getElementsByTagName('p').innerHTML = 'You win!';
-    //document.body.appendChild(winMessage);
 
-    //Display winner text on the canvas
+    // Display winner text on the canvas
     ctx.font = "30px Arial";
     ctx.fillText("Congratulations, you are a winner!", 20, 450);
 
-    //Stop all the enemies from moving
+    // Stop all the enemies from moving
     for (const enemy of allEnemies) {
       enemy.speed = 0;
     }
 
-    //After 3 second delay showing winner message, reset the
-    //game
+    // After 3 second delay showing winner message, reset the
+    // game.
     setTimeout(function() {
       window.location.reload();
       }, 3000
@@ -111,23 +106,22 @@ class Player {
 
 
   render() {
-    //Draw the player icon on the screen
+    // Draw the player icon on the screen.
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 
-    //Score details at top of canvas
+    //Score details at top of canvas.
     ctx.font = "30px Arial";
     ctx.fillText("You have got "+ this.score + " times across out of 5", 10, 40);
 
-    //Player wins if reach the water.
+    // Player wins if reach the water.
     if (this.score == 5) {
-      //this.reset();
       this.win();
     }
   }
 
   handleInput(keyDirection) {
 
-    //Moves the player character when using the keyboard arrow keys
+    // Moves the player character when using the keyboard arrow keys.
     if (keyDirection === 'right') {
         this.x += 100;
     } else if (keyDirection === 'left') {
