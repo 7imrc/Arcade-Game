@@ -9,7 +9,7 @@ This project involved taking some starter code from Udacity, which contained art
 
 ## Game Play
 
-The playing character can be moved around the screen using the &leftarrow, &uparrow, &downarrow, &rightarrow keys.
+The playing character can be moved around the screen using the `up` `down` `left` `right` arrow keys.
 
 In order to complete the game, you need to get the character safely up the screen to the water 5 times.  If you collide with one of the enemy bugs, the player character will be returned to the start position.
 
@@ -27,4 +27,4 @@ I plan to further develop the game by providing the following:
 
 * The ability to have player lives
 * Randomise the enemy bug speed
-* Introduce gems that can earn the player points 
+* Introduce gems that can earn the player points
