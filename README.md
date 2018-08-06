@@ -1,6 +1,22 @@
-frontend-nanodegree-arcade-game
-===============================
+### Frogger-style Game
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+This project involved taking some starter code from Udacity, which contained art assets and a game engine.  I had to then build the code in order to provide a workable game.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+## Installing
+
+1. Clone this repo.
+2. Open `index.html` inside your browser.
+
+## Game Play
+
+The playing character can be moved around the screen using the &larr, &uarr, &darr, &rarr keys.
+
+In order to complete the game, you need to get the character safely up the screen to the water 5 times.  If you collide with one of the enemy bugs, the player character will be returned to the start position.
+
+Successfully crossing the screen, will result in a congratulations message, before the game will shortly restart.
+
+## Acknowledgements
+
+The Udacity starter code for this project can be found at their [Github page](https://github.com/udacity/frontend-nanodegree-arcade-game).
+
+The collision engine used in this project was adapted from [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection).
